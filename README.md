@@ -32,8 +32,6 @@ Mainly **Show the RSS result as a list in Main activity using recyclerView.**
 
 * Add comment and explanation to your code. If i can't read your code then it's useless for team work,
 
-* Add my user `mahdi-malv` as a **contributor** to your project so i can make changes and give requests too.
-
 * For every single task, I repeat **Every single task** you modify and add make separate branches.
 > For example if you successfully added the network requests completely push it to `network-branch` not `master`. Then merge it with master.
 > Make a new branch and go to it using `$ git checkout -b my-branch`
