@@ -28,20 +28,7 @@ public class DataProvider {
         return dataProvider;
     }
 
-    //********************************************************************
 
-
-    /**
-     * TODO: Delete this one.
-     *
-     * @return a fake message
-     */
-    public String provideFakeMessage() {
-        return "Simple Message";
-    }
-
-
-    // **************************************************************
 
     /**
      * We don't want anyone to new this. He/She must use {@link #getInstance()}
