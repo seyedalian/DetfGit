@@ -16,8 +16,7 @@ public class MainActivity extends BaseActivity {
         setDefaultToolbar();
         initViews();
 
-        //TODO : Delete this when started coding
-        toast(dataProvider.provideFakeMessage());
+
         //simpleAlert("title", "message");
 
 
