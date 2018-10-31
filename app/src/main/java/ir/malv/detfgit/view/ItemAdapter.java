@@ -27,9 +27,9 @@ public class ItemAdapter  extends ArrayAdapter {
     Context context;
 
 
-    public ItemAdapter(Context context, int resource, Item [] items, Context context1) {
+    public ItemAdapter(Context context, int resource, Item [] items) {
         super(context, resource, items);
-        this.context = context1;
+        this.context = context;
         this.items =items;
     }
 
@@ -75,14 +75,7 @@ public class ItemAdapter  extends ArrayAdapter {
 
 
 
-            //set listener on link to go to page in website
-            link.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link.getText().toString()));
-                    context.startActivity(myIntent);
-                }
-            });
+
 
         }
         public void fill(Item item){
@@ -94,6 +87,15 @@ public class ItemAdapter  extends ArrayAdapter {
             enclosureIV.setImageBitmap(image2Bitmap(R.drawable.image));
             //get image from net
             getImageFromNetAndSetToImageView(item);
+
+            //set listener on link to go to page in website
+            link.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link.getText().toString()));
+                    context.startActivity(myIntent);
+                }
+            });
         }
 
             private void getImageFromNetAndSetToImageView(Item item) {
