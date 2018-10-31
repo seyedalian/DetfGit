@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -20,25 +18,25 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import ir.malv.detfgit.R;
 import ir.malv.detfgit.network.model.Item;
 
 public class ItemAdapter  extends ArrayAdapter {
-    List<Item> items;
+    Item [] items;
     Context context;
-    public ItemAdapter(@NonNull Context context, int resource, @NonNull  List<Item> items) {
-        super(context, resource, items);
-        this.items = items;
-        this.context =context;
-    }
 
+
+    public ItemAdapter(Context context, int resource, Item [] items, Context context1) {
+        super(context, resource, items);
+        this.context = context1;
+        this.items =items;
+    }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-       Item item = items.get(position);
+       Item item = items[position];
         ViewHolder viewHolder;
        if(convertView==null){
            LayoutInflater layoutInflater =
