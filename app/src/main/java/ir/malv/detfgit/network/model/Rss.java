@@ -9,7 +9,15 @@ public class Rss
     @Element(name = "channel")
     private Channel channel;
     @Element(name = "version")
-    private String version;
+    private float version;
+
+    public float getVersion() {
+        return version;
+    }
+
+    public void setVersion(float version) {
+        this.version = version;
+    }
 
     public Channel getChannel ()
     {
@@ -21,15 +29,6 @@ public class Rss
         this.channel = channel;
     }
 
-    public String getVersion ()
-    {
-        return version;
-    }
-
-    public void setVersion (String version)
-    {
-        this.version = version;
-    }
 
     @Override
     public String toString()
