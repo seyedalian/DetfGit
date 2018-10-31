@@ -1,32 +1,52 @@
 package ir.malv.detfgit.network.model;
 
-public class Enclosure {
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-    String _url;
-    String _type;
-    int _length;
+@Root(name = "enclosure")
+public class Enclosure
+{
+    @Element (name ="length")
+    private String length;
+    @Element (name ="type")
+    private String type;
+    @Element (name ="url")
+    private String url;
 
-    public String get_url() {
-        return _url;
+    public String getLength ()
+    {
+        return length;
     }
 
-    public void set_url(String _url) {
-        this._url = _url;
+    public void setLength (String length)
+    {
+        this.length = length;
     }
 
-    public String get_type() {
-        return _type;
+    public String getType ()
+    {
+        return type;
     }
 
-    public void set_type(String _type) {
-        this._type = _type;
+    public void setType (String type)
+    {
+        this.type = type;
     }
 
-    public int get_length() {
-        return _length;
+    public String getUrl ()
+    {
+        return url;
     }
 
-    public void set_length(int _length) {
-        this._length = _length;
+    public void setUrl (String url)
+    {
+        this.url = url;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [length = "+length+", type = "+type+", url = "+url+"]";
     }
 }
+
