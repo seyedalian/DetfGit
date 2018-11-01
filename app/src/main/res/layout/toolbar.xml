@@ -7,13 +7,6 @@
     android:layout_height="?attr/actionBarSize">
 
 
-    <ImageView
-        android:id="@+id/menu"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        app:srcCompat="@drawable/detflogo" />
-
 
 
 </android.support.v7.widget.Toolbar>

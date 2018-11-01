@@ -3,9 +3,15 @@ package ir.malv.detfgit.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ir.malv.detfgit.R;
 import ir.malv.detfgit.network.model.Enclosure;
@@ -17,7 +23,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     DataProvider dataProvider;
     Rss rss;
-    Item[] items;
+    List<Item> items;
     ListView listNews;
     ItemAdapter adapter;
     TextView title;
@@ -35,6 +41,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         link.setOnClickListener(this);
 
 
+
+
+
+
     }
     private void refreshDisplay() {
         adapter = new ItemAdapter(MainActivity.this,R.layout.item_of_listview,items);
@@ -46,6 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void init() {
+        items = new ArrayList<>();
         dataProvider = DataProvider.getInstance();
         listNews =findViewById(R.id.list_View);
         title = findViewById(R.id.titleOfMainPage);
@@ -71,6 +82,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         // ...
     }
 
+
+
     @Override
     public void onClick(View view) {
         if(view.getId() ==R.id.linkOfMain){
@@ -79,4 +92,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(myIntent);
         }
     }
+
+
+
+
+
 }

@@ -18,25 +18,25 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import ir.malv.detfgit.R;
 import ir.malv.detfgit.network.model.Item;
 
 public class ItemAdapter  extends ArrayAdapter {
-    Item [] items;
+    List<Item> items;
     Context context;
 
-
-    public ItemAdapter(Context context, int resource, Item [] items) {
-        super(context, resource, items);
-        this.context = context;
-        this.items =items;
+    public ItemAdapter(Context context, int resource, List<Item> objects) {
+        super(context, resource, objects);
+        items =objects;
+        this.context =context;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-       Item item = items[position];
+       Item item =items.get(position);
         ViewHolder viewHolder;
        if(convertView==null){
            LayoutInflater layoutInflater =
