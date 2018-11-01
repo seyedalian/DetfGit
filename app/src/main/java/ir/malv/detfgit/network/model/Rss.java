@@ -1,21 +1,23 @@
 package ir.malv.detfgit.network.model;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(name = "rss")
+@Root(name = "rss" , strict=false)
 public class Rss
 {
     @Element(name = "channel")
     private Channel channel;
-    @Element(name = "version")
-    private float version;
+    @Attribute
+    private String version;
 
-    public float getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(float version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 

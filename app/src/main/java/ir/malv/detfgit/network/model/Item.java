@@ -1,22 +1,24 @@
 package ir.malv.detfgit.network.model;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementUnion;
 import org.simpleframework.xml.Root;
 
-@Root(name = "item")
+@Root(name = "item",strict = false)
 public class Item
 {
-    @Element(name = "author")
+
     private String author;
-    @Element(name = "pubDate")
+    @Element
     private String pubDate;
-    @Element(name = "title")
+    @Element
     private String title;
-    @Element(name = "enclosure")
+    @Element(type = Enclosure.class,name ="enclosure" )
     private Enclosure enclosure;
-    @Element(name = "description")
-    private String description;
-    @Element(name = "link")
+    @Element(name = "description",data = true)
+    private CharSequence description;
+    @Element(name = "link" )
     private String link;
 
     public String getAuthor ()
@@ -61,11 +63,10 @@ public class Item
 
     public String getDescription ()
     {
-        return description;
+        return description.toString();
     }
 
-    public void setDescription (String description)
-    {
+    public void setDescription(CharSequence description) {
         this.description = description;
     }
 

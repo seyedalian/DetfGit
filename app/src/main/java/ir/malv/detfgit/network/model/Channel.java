@@ -1,7 +1,10 @@
 package ir.malv.detfgit.network.model;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.List;
 
 @Root(name ="channel")
 public class Channel
@@ -16,8 +19,8 @@ public class Channel
     private String link;
     @Element(name ="lastBuildDate")
     private String lastBuildDate;
-    @Element(name ="item")
-    private Item[] item;
+    @ElementList(name ="item")
+    private List<Item> item;
     @Element(name ="generator")
     private String generator;
     @Element(name ="webMaster")
@@ -73,13 +76,11 @@ public class Channel
         this.lastBuildDate = lastBuildDate;
     }
 
-    public Item[] getItem ()
-    {
+    public List<Item> getItem() {
         return item;
     }
 
-    public void setItem (Item[] item)
-    {
+    public void setItem(List<Item> item) {
         this.item = item;
     }
 

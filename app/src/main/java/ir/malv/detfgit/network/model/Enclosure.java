@@ -1,25 +1,31 @@
 package ir.malv.detfgit.network.model;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 @Root(name = "enclosure")
 public class Enclosure
 {
-    @Element (name ="length")
-    private String length;
-    @Element (name ="type")
+    public Enclosure(String url) {
+        this.url = url;
+    }
+
+    @Attribute
+    private int length;
+    @Attribute
+
     private String type;
-    @Element (name ="url")
+    @Attribute
+
     private String url;
 
-    public String getLength ()
-    {
+    public int getLength() {
         return length;
     }
 
-    public void setLength (String length)
-    {
+    public void setLength(int length) {
         this.length = length;
     }
 
