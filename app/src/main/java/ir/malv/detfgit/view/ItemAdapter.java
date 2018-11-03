@@ -88,7 +88,7 @@ public class ItemAdapter  extends ArrayAdapter {
             // set information from item
             title.setText(item.getTitle());
             description.setText(item.getDescription());
-            link.setText("go to page");
+            link.setText("رفتن به صفحه مطلب");
             author.setText(item.getAuthor());
             enclosureIV.setImageBitmap(image2Bitmap(R.drawable.image));
             //get image from net

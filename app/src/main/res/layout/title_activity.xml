@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:background="@drawable/shap_of_title"
     tools:layout_editor_absoluteY="25dp">
     <!--this activity maked to creat top of main_activity-->
     <LinearLayout
@@ -28,15 +28,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/linkOfMain"
                 android:layout_weight="1"
-
-                android:text="go to main page"
+                android:gravity="center"
+                android:textColor="#ffbf00"
+                android:background="@drawable/shap_of_link"
+                android:text="رفتن به سایت "
                 android:textSize="15sp"
 
                 />
@@ -47,7 +49,7 @@
                 android:layout_weight="2"
                 android:id="@+id/lastBuildDate"
                 android:text="lastBuildDate"
-
+                android:gravity="center"
                 android:textSize="10sp" />
 
 
