@@ -29,7 +29,7 @@ public class DataProvider {
     private static DataProvider dataProvider;
 
     private Retrofit retrofit;
-    Rss rss= null;
+    private Rss rss= null;
 
     public static DataProvider getInstance() {
         if (dataProvider == null) {
@@ -41,7 +41,9 @@ public class DataProvider {
 
 
 
+
     /**
+
      * We don't want anyone to new this. He/She must use {@link #getInstance()}
      */
     private DataProvider() {
@@ -53,6 +55,11 @@ public class DataProvider {
             public void onResponse(Call call, Response response) {
                 if(response.isSuccessful()){
                     rss = (Rss) response.body();
+                    if(rss ==null){
+                        Log.e(Constant.APP_NAME,"rss is Null");
+                    }else{
+                        Log.i(Constant.APP_NAME,"Rss is ok");
+                    }
                     Log.i(Constant.APP_NAME,response.message()+"---------------->");
                 }else {
                     Log.e(Constant.APP_NAME,response.message()+"---------------->");
@@ -67,7 +74,14 @@ public class DataProvider {
         });
 
     }
+
     public Rss getRss() {
         return rss;
+    }
+
+
+
+    public Retrofit getRetrofit() {
+        return retrofit;
     }
 }
