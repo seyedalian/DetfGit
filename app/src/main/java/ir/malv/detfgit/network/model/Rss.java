@@ -1,24 +1,39 @@
 package ir.malv.detfgit.network.model;
 
-import java.util.List;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-public class Rss {
-    List<News>channel;
-    String _version;
+@Root(name = "rss" )
+public class Rss
+{
+    @Element(name = "channel")
+    private Channel channel;
+    @Attribute
+    private String version;
 
-    public List<News> getChannel() {
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public Channel getChannel ()
+    {
         return channel;
     }
 
-    public void setChannel(List<News> channel) {
+    public void setChannel (Channel channel)
+    {
         this.channel = channel;
     }
 
-    public String get_version() {
-        return _version;
-    }
 
-    public void set_version(String _version) {
-        this._version = _version;
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [channel = "+channel+", version = "+version+"]";
     }
 }
