@@ -65,7 +65,7 @@ public class Item
 
     public String getDescription ()
     {
-        return description.toString();
+        return description;
     }
 
     public void setDescription(String description) {

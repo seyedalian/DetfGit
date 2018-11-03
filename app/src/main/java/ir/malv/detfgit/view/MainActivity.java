@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     Log.i(Constant.APP_NAME,"rss not null");
                     items=rss.getChannel().getItem();
                     //refresh listView Display
-                    //refreshDisplay();
+                    refreshDisplay();
                     //set rss information in title and link and lastBuildDate
                     title.setText(rss.getChannel().getTitle());
                     link.setText("go to page");
