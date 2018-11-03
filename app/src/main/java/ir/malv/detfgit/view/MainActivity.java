@@ -1,5 +1,6 @@
 package ir.malv.detfgit.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,7 +52,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-
     }
     private void refreshDisplay() {
         adapter = new ItemAdapter(MainActivity.this,R.layout.item_of_listview,items,typeface);
@@ -73,27 +74,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         title.setTypeface(typeface);
         link.setTypeface(typeface);
         lastBuildDate.setTypeface(typeface);
-        //add handel Because get information of Rss was delayed one second
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                rss =dataProvider.getRss();
-                if(rss != null){
-                    Log.i(Constant.APP_NAME,"rss not null");
-                    items=rss.getChannel().getItem();
-                    //refresh listView Display
-                    refreshDisplay();
-                    //set rss information in title and link and lastBuildDate
-                   // title.setText(rss.getChannel().getTitle());
-                   // link.setText("go to page");
-                    lastBuildDate.setText(rss.getChannel().getLastBuildDate());
-                    String linkPage = rss.getChannel().getLink();
-                    link.setTag(linkPage);
-                }else {
-                    Log.e(Constant.APP_NAME,"null Rss");
+        //add handel Because get information of Rss was delayed one second and dialog
+        final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        dialog.setMessage("بارگیری اطلاعات");
+        dialog.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    rss = dataProvider.getRss();
+                    if (rss != null) {
+                        dialog.dismiss();
+                        Log.i(Constant.APP_NAME, "rss not null");
+                        items = rss.getChannel().getItem();
+                        //refresh listView Display
+                        refreshDisplay();
+                        //set rss information in title and link and lastBuildDate
+                        // title.setText(rss.getChannel().getTitle());
+                        // link.setText("go to page");
+                        lastBuildDate.setText(rss.getChannel().getLastBuildDate());
+                        String linkPage = rss.getChannel().getLink();
+                        link.setTag(linkPage);
+                    } else {
+                        Log.e(Constant.APP_NAME, "null Rss");
+                    }
                 }
-            }
-        },1000l);
+            }, 1000l);
+
 
 
 
