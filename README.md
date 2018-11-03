@@ -1,3 +1,3 @@
 # DetfGit
 
-Developer : seyedalian
+Developer : seyedsajjad seyedalian
