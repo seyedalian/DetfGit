@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.DrawableRes;
@@ -29,11 +30,12 @@ import ir.malv.detfgit.network.model.Item;
 public class ItemAdapter  extends ArrayAdapter {
     List<Item> items;
     Context context;
-
-    public ItemAdapter(Context context, int resource, List<Item> objects) {
+    Typeface typeface ;
+    public ItemAdapter(Context context, int resource, List<Item> objects,Typeface typeface) {
         super(context, resource, objects);
         items =objects;
         this.context =context;
+        this.typeface =typeface;
     }
 
     @NonNull
@@ -70,11 +72,18 @@ public class ItemAdapter  extends ArrayAdapter {
             author  =convertView.findViewById(R.id.author);
             enclosureIV = convertView.findViewById(R.id.enclosure);
 
+            //setTypeFace
+            title.setTypeface(typeface);
+            description.setTypeface(typeface);
+            link.setTypeface(typeface);
+            author.setTypeface(typeface);
+            author.setTypeface(typeface);
 
 
 
 
         }
+
         public void fill(final Item item){
             // set information from item
             title.setText(item.getTitle());

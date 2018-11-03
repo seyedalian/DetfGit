@@ -1,6 +1,7 @@
 package ir.malv.detfgit.view;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView title;
     TextView link;
     TextView lastBuildDate;
+    Typeface typeface;
 
 
     @Override
@@ -51,7 +53,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
     private void refreshDisplay() {
-        adapter = new ItemAdapter(MainActivity.this,R.layout.item_of_listview,items);
+        adapter = new ItemAdapter(MainActivity.this,R.layout.item_of_listview,items,typeface);
         listNews.setAdapter(adapter);
 
     }
@@ -60,12 +62,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void init() {
+        typeface = Typeface.createFromAsset(MainActivity.this.getAssets(),"fonts/bnazanin.ttf");
         items = new ArrayList<>();
         dataProvider = DataProvider.getInstance();
         listNews =findViewById(R.id.list_View);
         title = findViewById(R.id.titleOfMainPage);
         link = findViewById(R.id.linkOfMain);
         lastBuildDate = findViewById(R.id.lastBuildDate);
+        //set typeFace for edit fonts
+        title.setTypeface(typeface);
+        link.setTypeface(typeface);
+        lastBuildDate.setTypeface(typeface);
         //add handel Because get information of Rss was delayed one second
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -77,8 +84,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     //refresh listView Display
                     refreshDisplay();
                     //set rss information in title and link and lastBuildDate
-                    title.setText(rss.getChannel().getTitle());
-                    link.setText("go to page");
+                   // title.setText(rss.getChannel().getTitle());
+                   // link.setText("go to page");
                     lastBuildDate.setText(rss.getChannel().getLastBuildDate());
                     String linkPage = rss.getChannel().getLink();
                     link.setTag(linkPage);
