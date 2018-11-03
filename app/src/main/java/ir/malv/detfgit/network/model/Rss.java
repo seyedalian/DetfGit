@@ -2,10 +2,9 @@ package ir.malv.detfgit.network.model;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(name = "rss" , strict=false)
+@Root(name = "rss" )
 public class Rss
 {
     @Element(name = "channel")

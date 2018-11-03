@@ -4,21 +4,23 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementUnion;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Text;
 
-@Root(name = "item",strict = false)
+@Root(name = "item")
 public class Item
 {
-
+    @Element(name ="author" ,required = false)
     private String author;
-    @Element
+    @Element(name ="pubDate" ,required = false)
     private String pubDate;
-    @Element
+    @Element(name ="title" ,required = false)
     private String title;
-    @Element(type = Enclosure.class,name ="enclosure" )
+    @Element(type = Enclosure.class,name ="enclosure",required = false)
     private Enclosure enclosure;
-    @Element(name = "description",data = true)
-    private CharSequence description;
-    @Element(name = "link" )
+
+    @Element(name ="description" ,required = false)
+    private String description;
+    @Element(name = "link" ,required = false)
     private String link;
 
     public String getAuthor ()
@@ -66,7 +68,7 @@ public class Item
         return description.toString();
     }
 
-    public void setDescription(CharSequence description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

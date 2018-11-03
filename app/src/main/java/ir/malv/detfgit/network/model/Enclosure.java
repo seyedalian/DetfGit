@@ -8,16 +8,13 @@ import org.simpleframework.xml.Root;
 @Root(name = "enclosure")
 public class Enclosure
 {
-    public Enclosure(String url) {
-        this.url = url;
-    }
 
-    @Attribute
+    @Attribute(required = false ,name ="length")
     private int length;
-    @Attribute
+    @Attribute(required = false ,name ="type")
 
     private String type;
-    @Attribute
+    @Attribute(required = false ,name ="url")
 
     private String url;
 

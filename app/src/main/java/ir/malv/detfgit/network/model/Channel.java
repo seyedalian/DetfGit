@@ -19,7 +19,7 @@ public class Channel
     private String link;
     @Element(name ="lastBuildDate")
     private String lastBuildDate;
-    @ElementList(name ="item")
+    @ElementList(name ="item", required=false, entry="item", inline=true)
     private List<Item> item;
     @Element(name ="generator")
     private String generator;
