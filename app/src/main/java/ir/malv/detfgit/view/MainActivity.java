@@ -1,8 +1,10 @@
 package ir.malv.detfgit.view;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -62,6 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
+
     private void init() {
         typeface = Typeface.createFromAsset(MainActivity.this.getAssets(),"fonts/bnazanin.ttf");
         items = new ArrayList<>();
@@ -74,32 +77,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         title.setTypeface(typeface);
         link.setTypeface(typeface);
         lastBuildDate.setTypeface(typeface);
-        //add handel Because get information of Rss was delayed one second and dialog
-        final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-        dialog.setMessage("بارگیری اطلاعات");
-        dialog.show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    rss = dataProvider.getRss();
-                    if (rss != null) {
-                        dialog.dismiss();
-                        Log.i(Constant.APP_NAME, "rss not null");
-                        items = rss.getChannel().getItem();
-                        //refresh listView Display
-                        refreshDisplay();
-                        //set rss information in title and link and lastBuildDate
-                        // title.setText(rss.getChannel().getTitle());
-                        // link.setText("go to page");
-                        lastBuildDate.setText(rss.getChannel().getLastBuildDate());
-                        String linkPage = rss.getChannel().getLink();
-                        link.setTag(linkPage);
-                    } else {
-                        Log.e(Constant.APP_NAME, "null Rss");
-                    }
-                }
-            }, 1000l);
 
+
+        if(isNetworkConnected()) {
+            refreshConnect();
+        }else {
+
+            simpleAlert("توجه","اتصال اینترنت قطع می باشد",R.drawable.warnning);
+        }
 
 
 
@@ -111,6 +96,43 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         // ...
     }
 
+    private void refreshConnect() {
+        //add handel Because get information of Rss was delayed one second and dialog
+        final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        dialog.setMessage("بارگیری اطلاعات");
+        dialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rss = dataProvider.getRss();
+                if (rss != null) {
+                    dialog.dismiss();
+                    Log.i(Constant.APP_NAME, "rss not null");
+                    items = rss.getChannel().getItem();
+                    //refresh listView Display
+                    refreshDisplay();
+                    //set rss information in title and link and lastBuildDate
+                    // title.setText(rss.getChannel().getTitle());
+                    // link.setText("go to page");
+                    lastBuildDate.setText(rss.getChannel().getLastBuildDate());
+                    String linkPage = rss.getChannel().getLink();
+                    link.setTag(linkPage);
+                } else {
+                    Log.e(Constant.APP_NAME, "null Rss");
+                }
+            }
+        }, 1000l);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(rss==null){
+                    dialog.dismiss();
+                    simpleAlert("توجه","گرفتن اطلاعات با شکست مواجه شد",R.drawable.warnning);
+
+                }
+            }
+        },2500l);
+    }
 
 
     @Override
@@ -122,7 +144,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        return cm.getActiveNetworkInfo() != null;
+    }
 
 
 
