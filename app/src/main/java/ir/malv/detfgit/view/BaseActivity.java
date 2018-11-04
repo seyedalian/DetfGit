@@ -45,11 +45,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
     }
 
-    protected void simpleAlert(String title, String message) {
+    protected void simpleAlert(String title, String message,int iconId) {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", null)
+                .setIcon(iconId)
                 .create()
                 .show();
     }
