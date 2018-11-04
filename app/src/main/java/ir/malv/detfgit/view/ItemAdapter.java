@@ -148,8 +148,8 @@ public class ItemAdapter  extends ArrayAdapter {
 
         protected void onPostExecute(Bitmap result) {
 
-            result = Bitmap.createScaledBitmap(result,100
-                    ,100,true);
+            result = Bitmap.createScaledBitmap(result,200
+                    ,200,true);
 
             bmImage.setImageBitmap(result);
         }
