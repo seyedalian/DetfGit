@@ -46,7 +46,7 @@ public class DataProvider {
 
      * We don't want anyone to new this. He/She must use {@link #getInstance()}
      */
-    private DataProvider() {
+    public DataProvider() {
         retrofit = RetrofitUtils.getInstance();
         final Request request =retrofit.create(Request.class);
         Call call = request.getRss();

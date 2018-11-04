@@ -14,6 +14,7 @@ import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView link;
     TextView lastBuildDate;
     Typeface typeface;
+    ImageView refreshIV;
 
 
     @Override
@@ -49,7 +51,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         init();
         //setOnClickListener for go to page of api
         link.setOnClickListener(this);
-
+        refreshIV.setOnClickListener(this);
 
 
 
@@ -72,7 +74,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         listNews =findViewById(R.id.list_View);
         title = findViewById(R.id.titleOfMainPage);
         link = findViewById(R.id.linkOfMain);
+        link.setTag("https://www.yjc.ir");
         lastBuildDate = findViewById(R.id.lastBuildDate);
+        refreshIV = findViewById(R.id.refreshIV);
         //set typeFace for edit fonts
         title.setTypeface(typeface);
         link.setTypeface(typeface);
@@ -81,22 +85,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if(isNetworkConnected()) {
             refreshConnect();
+
         }else {
 
             simpleAlert("توجه","اتصال اینترنت قطع می باشد",R.drawable.warnning);
         }
 
 
-
-
-
-
-
-
         // ...
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem refreshItemMenu = menu.add("").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                refreshConnect();
+                adapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+        refreshItemMenu.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        refreshItemMenu.setIcon(R.drawable.refresh);
+
+
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private void refreshConnect() {
+        dataProvider = new DataProvider();
         //add handel Because get information of Rss was delayed one second and dialog
         final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
         dialog.setMessage("بارگیری اطلاعات");
@@ -128,7 +146,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 if(rss==null){
                     dialog.dismiss();
                     simpleAlert("توجه","گرفتن اطلاعات با شکست مواجه شد",R.drawable.warnning);
-
+                    refreshIV.setVisibility(View.VISIBLE);
                 }
             }
         },2500l);
@@ -141,6 +159,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             String uri =view.getTag().toString();
             Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             startActivity(myIntent);
+        }
+        if(view.getId()==R.id.refreshIV){
+            refreshConnect();
+            refreshIV.setVisibility(View.GONE);
+
         }
     }
 
