@@ -92,6 +92,7 @@ public class ItemAdapter  extends ArrayAdapter {
             author.setText(item.getAuthor());
             enclosureIV.setImageBitmap(image2Bitmap(R.drawable.image));
             //get image from net
+            if(item.getEnclosure() != null)
             getImageFromUrl(enclosureIV,item.getEnclosure().getUrl());
            // getImageFromNetAndSetToImageView(item);
 
