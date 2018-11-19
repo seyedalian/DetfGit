@@ -3,22 +3,26 @@ package ir.malv.detfgit.view;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import ir.malv.detfgit.R;
 
 public class SplashActivity extends BaseActivity {
-    TextView textView;
+    TextView textInSplash;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         Typeface typeface = Typeface.createFromAsset(SplashActivity.this.getAssets(),"fonts/bnazanin.ttf");
-        textView =findViewById(R.id.textView);
-        textView.setTypeface(typeface);
+        textInSplash =findViewById(R.id.textInSplash);
+        textInSplash.setTypeface(typeface);
+        imageView = findViewById(R.id.sp_icon_main);
+        imageView.setAlpha(0f);
+        imageView.animate().alpha(1f).setDuration(2000l).start();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -29,7 +33,7 @@ public class SplashActivity extends BaseActivity {
 
 
             }
-        },2500l);
+        },3000l);
 
 
 

@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     Log.e(Constant.APP_NAME, "null Rss");
                 }
             }
-        }, 1000l);
+        }, 2000l);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

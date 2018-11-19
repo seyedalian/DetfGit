@@ -113,8 +113,8 @@ public class ItemAdapter  extends ArrayAdapter {
 
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
-        bitmap = Bitmap.createScaledBitmap(bitmap,100
-                ,100,true);
+   /*     bitmap = Bitmap.createScaledBitmap(bitmap,100
+                ,100,true);*/
 
         return bitmap;
 
@@ -149,8 +149,8 @@ public class ItemAdapter  extends ArrayAdapter {
 
         protected void onPostExecute(Bitmap result) {
 
-            result = Bitmap.createScaledBitmap(result,200
-                    ,200,true);
+            /*result = Bitmap.createScaledBitmap(result,200
+                    ,200,true);*/
 
             bmImage.setImageBitmap(result);
         }
