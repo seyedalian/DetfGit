@@ -1,12 +1,8 @@
 package ir.malv.detfgit.network.provider;
 
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
-
 import ir.malv.detfgit.Constant;
-import ir.malv.detfgit.R;
 import ir.malv.detfgit.network.RetrofitUtils;
 import ir.malv.detfgit.network.model.Rss;
 import ir.malv.detfgit.network.request.Request;
@@ -42,10 +38,6 @@ public class DataProvider {
 
 
 
-    /**
-
-     * We don't want anyone to new this. He/She must use {@link #getInstance()}
-     */
     public DataProvider() {
         retrofit = RetrofitUtils.getInstance();
         final Request request =retrofit.create(Request.class);

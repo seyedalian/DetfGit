@@ -26,9 +26,4 @@ public class RetrofitUtils {
         return retrofit;
     }
 
-    /**
-     * We don't want anyone to new this. He/She must use {@link #getInstance()}
-     */
-    private RetrofitUtils() {
-    }
 }
