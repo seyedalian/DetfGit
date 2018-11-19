@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/sp_icon_main"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="8dp"
@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/detficon" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textInSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_icon_main" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/detfLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textInSplash"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/detflogo" />
 </android.support.constraint.ConstraintLayout>
